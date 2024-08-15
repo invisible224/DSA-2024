@@ -9,8 +9,9 @@
 // Input: nums = [4,1,2,1,2]
 // Output: 4
 
-
+// Better
 import java.util.HashMap;
+
 public class SingleNumber {
     public int singleNumber(int[] nums) {
         HashMap<Integer, Integer> map = new HashMap<>();
@@ -24,5 +25,20 @@ public class SingleNumber {
             }
         }
         return -1;
+    }
+}
+
+// Optimal
+// XOR of (A XOR A) = 0
+// XOR of (A XOR 0 ) = A
+class Solution {
+    public int singleNumber(int[] nums) {
+        int xor = 0;
+
+        for (int i = 0; i < nums.length; i++) {
+            xor = xor ^ nums[i];
+        }
+
+        return xor;
     }
 }
